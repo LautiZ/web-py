@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+
+    <h2>Posts</h2>
+
+    {% for post in posts %}
+
+        <div class="borde-inf">
+        <h2>{{post.title}} <span>{{post.date|date:'d/m/Y'}}</span></h2>
+        <p>{{post.description|striptags|truncatechars:300}}</p>
+        <div class="center-img">
+            <img src="{{post.image.url}}" alt="{{post.title}}" class="img-posts">
+        </div>
+        <div class="centrar">
+            <a class="fancy" href="{% url 'blog:post_detail' post.id %}">
+                <span class="top-key"></span>
+                <span class="text">{{post.title}}</span>
+                <span class="bottom-key-1"></span>
+                <span class="bottom-key-2"></span>
+            </a>
+        </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
